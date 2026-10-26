@@ -73,6 +73,23 @@ needed to price the turn exactly with the turn's real model.
 4. Add the amount to each bucket row inside the detail dialog, and close the list
    with 预估费用 / 当前费率 / 按官网标价估算 rows.
 5. Treat a missing optional bucket as zero, never as `NaN`.
+6. **Keep the `t` prop at the call site.** The call currently reads
+   `jsx(TurnUsagePanel, { usage: data.tokenUsage, t })`. If you add a parameter
+   such as `time`, still pass `t`: the component calls `t(...)` on its first line,
+   and dropping the locale seat throws during render, which removes the whole usage
+   button instead of just leaving it unpriced. `node --check` cannot catch this.
+7. Check the profile first: the per-turn panel only renders in `detailed` mode.
+   If `<DSH_HOME>/profiles/<name>/cordis.patch.yml` leaves `ui-chat` on the
+   compact default, add:
+
+   ```yaml
+   - id: ui-chat
+     name: "@deepseek-ai/dsh-client-ui-chat"
+     config:
+       performanceUsage: detailed
+   ```
+
+   Without it the button never mounts, so a correct patch still shows nothing.
 
 ## Pricing
 
@@ -98,6 +115,10 @@ DeepSeek's published sheet, CNY per 1M tokens — peak first, then off-peak:
   prices to ¥1.93 off-peak on `deepseek-flash`, with rows at ¥0.3533 / ¥0.9092 /
   ¥0.6668.
 - For the archive: every other entry still hashes to its recorded `integrity`.
+- **Load the UI and look at a turn.** After restarting the host, open a session with
+  usage and confirm the button itself reads `用量 X tok · 费用 ¥Y`, and that the
+  browser console is clean. A missing button means the component threw while
+  rendering — almost always the dropped `t` prop, not the pricing code.
 
 ## Report
 
