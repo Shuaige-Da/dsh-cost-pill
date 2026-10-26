@@ -25,6 +25,15 @@ Hovering the pill reveals the breakdown the number is made of:
 
 The pill disappears while the session has billed no tokens yet.
 
+## The usage dialogs
+
+The host's own token-usage dialogs show counts but no money. While one is open,
+each bucket row gains its own amount and the list closes with the estimated total,
+the rate window in force, and a one-line note — the same figures the pill shows.
+
+![Every bucket priced inside the usage dialog](preview/usage-dialog.png)
+
+
 ## Prices
 
 Official DeepSeek list prices, yuan per 1M tokens:
@@ -65,8 +74,10 @@ Then reload the page. No restart is needed on hosts that hot-apply profile patch
 - It prices the whole session with the session's current model. DeepSeek bills per
   request, so a session that switched models mid-way can be off by the rate
   difference between them.
-- It reads the `tokenUsage` and `modelSelection` session projections and renders
-  one more pill in the existing dock; it does not patch or replace host UI.
+- It reads the `tokenUsage` and `modelSelection` session projections for the pill,
+  and appends amounts to the host's own usage dialogs by reading the counts those
+  dialogs already render. It never replaces a host component, and if that markup
+  does not look the way it expects, it leaves the dialog exactly as it found it.
 - No telemetry, no network calls, no files written.
 
 ## License
