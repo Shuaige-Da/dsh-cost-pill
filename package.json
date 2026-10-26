@@ -1,7 +1,7 @@
 {
   "name": "dsh-cost-pill",
   "version": "0.1.1",
-  "description": "Shows an estimated CNY cost beside the composer token-usage pill, priced with DeepSeek's official peak and off-peak rates.",
+  "description": "Writes the session's estimated cost into the composer token-usage pill and prices every bucket in the usage dialogs, using DeepSeek's official peak and off-peak CNY rates.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
