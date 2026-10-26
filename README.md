@@ -1,7 +1,8 @@
 # dsh-cost-pill
 
-Adds one read-only pill to the DSH composer dock, next to the host's own token
-usage pill, showing what the session has cost so far in yuan.
+Continues the DSH composer's own token-usage pill with what the session has cost so
+far in yuan — the amount is written inside that pill, so it inherits the host's
+spacing and reads as part of the same row.
 
 ![The cost pill in the composer dock](preview/real-dock.png)
 
