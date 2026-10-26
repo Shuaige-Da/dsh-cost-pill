@@ -30,19 +30,36 @@
 
 ![用量弹窗里逐项标价](preview/usage-dialog.png)
 
-## 每轮费用行（可选，不属于本插件）
+## 每轮费用行（可选，需单独安装）
+
+![每条回答下方的每轮费用](preview/per-turn-row.png)
 
 每条回答下方那行 `用量 6.2M tok · 费用 ¥0.1718` 由宿主渲染，用的是每轮的分桶 token，
-插件读不到，所以**本插件不做这一行**。如果你也想要，仓库里给了完整做法，
-既有可直接粘贴的提示词，也有可安装的技能：
+这部分数据没有开放给插件，所以**本插件加不了这一行**。仓库里提供了两种安装方式，
+任选其一叠加在插件之上即可。
 
-- [`per-turn/PROMPT.md`](per-turn/PROMPT.md) —— 发给 DSH，Agent 会代你改宿主 bundle。
-- [`per-turn/SKILL.md`](per-turn/SKILL.md) —— 同一套流程的技能形态。
+### 方式一：安装技能（推荐）
 
-![由配套提示词补上的每轮费用](preview/per-turn-row.png)
+1. 把 [`per-turn/SKILL.md`](per-turn/SKILL.md) 复制到
+   `~/.dsh/skills/dsh-per-turn-cost/SKILL.md`
+   （Windows 为 `%USERPROFILE%\.dsh\skills\dsh-per-turn-cost\SKILL.md`）。
+2. 重启 DSH，让技能目录重新加载。
+3. 在任意对话里说一句：`用 dsh-per-turn-cost 给每轮加上费用`。
 
-这条路改的是宿主自带的界面代码，也正因如此它不能作为插件分发：DSH 一升级就会被覆盖，
-所以提示词里要求 Agent 先备份、改完再校验。
+### 方式二：直接粘贴提示词
+
+打开 [`per-turn/PROMPT.md`](per-turn/PROMPT.md)，复制里面那段放进对话即可，
+效果与方式一相同，不需要装技能。
+
+### 两条路都会改什么
+
+改的是宿主自带的 `dsh-client-ui-chat/lib/client.js`——npm / `dsh web` 安装在
+`node_modules` 里，桌面端在 `app.asar` 里（必须先退出应用）。Agent 会先备份、
+改完做语法校验，并把恢复命令告诉你。
+
+DSH 升级会覆盖这个文件，所以升级后需要再装一次。也正因如此它不能做成插件：
+那等于在每台机器上自动改写宿主自己的代码。
+
 
 
 

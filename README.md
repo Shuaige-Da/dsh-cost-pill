@@ -34,22 +34,39 @@ the rate window in force, and a one-line note — the same figures the pill show
 
 ![Every bucket priced inside the usage dialog](preview/usage-dialog.png)
 
-## Per-turn cost (optional — not part of this plugin)
+## Per-turn cost (optional — installed separately)
+
+![Per-turn cost under each answer](preview/per-turn-row.png)
 
 The row under each answer — `用量 6.2M tok · 费用 ¥0.1718` — is rendered by the host
-from per-turn billing buckets that a client plugin cannot read, so **this plugin
-does not add it**. If you want that row too, the repository ships the exact
-procedure, as a prompt you can paste and as an installable skill:
+from per-turn billing buckets that are not exposed to plugins, so **this plugin
+cannot add that row**. The repository ships the procedure in two forms; install
+either one on top of the plugin.
 
-- [`per-turn/PROMPT.md`](per-turn/PROMPT.md) — copy it to DSH and the agent patches
-  the host bundle for you.
-- [`per-turn/SKILL.md`](per-turn/SKILL.md) — the same procedure in skill form.
+### Option A — install the skill (recommended)
 
-![Per-turn cost added by the companion prompt](preview/per-turn-row.png)
+1. Copy [`per-turn/SKILL.md`](per-turn/SKILL.md) to
+   `~/.dsh/skills/dsh-per-turn-cost/SKILL.md`
+   (`%USERPROFILE%\.dsh\skills\dsh-per-turn-cost\SKILL.md` on Windows).
+2. Restart DSH so the skill catalog reloads.
+3. In any conversation, ask: `用 dsh-per-turn-cost 给每轮加上费用`.
 
-That route edits the host's own bundled client code, which is why it cannot ship
-as a plugin: DSH updates overwrite it, and the prompt makes the agent back up and
-verify before and after.
+### Option B — paste the prompt
+
+Open [`per-turn/PROMPT.md`](per-turn/PROMPT.md), copy the fenced block, and send it
+in a normal conversation. The agent does the same work without needing the skill.
+
+### What either route changes
+
+It edits the host's own bundled `dsh-client-ui-chat/lib/client.js` — inside
+`node_modules` for an npm/dsh web install, inside `app.asar` for the desktop app,
+which must be closed first. The agent backs the file up, syntax-checks the result,
+and tells you the restore command.
+
+A DSH update replaces that file, so the row has to be added again afterwards.
+That is precisely why it cannot ship as a plugin: shipping it would mean writing
+into the host's own code on every user's machine.
+
 
 
 
