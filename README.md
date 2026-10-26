@@ -3,6 +3,10 @@
 Adds one read-only pill to the DSH composer dock, next to the host's own token
 usage pill, showing what the session has cost so far in yuan.
 
+![The cost pill in the composer dock](preview/composer-dock.png)
+
+*Rendered from this repository's own `lib/client.js` with sample usage data.*
+
 ## What it shows
 
 `¥0.0871` — the estimated cost of every token this session has billed so far.
