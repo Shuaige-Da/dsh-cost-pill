@@ -1,5 +1,7 @@
 # dsh-cost-pill
 
+**English** · [简体中文](README.zh.md)
+
 Continues the DSH composer's own token-usage pill with what the session has cost so
 far in yuan — the amount is written inside that pill, so it inherits the host's
 spacing and reads as part of the same row.
