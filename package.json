@@ -1,0 +1,53 @@
+{
+  "name": "dsh-cost-pill",
+  "version": "0.1.0",
+  "description": "Shows an estimated CNY cost beside the composer token-usage pill, priced with DeepSeek's official peak and off-peak rates.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "usage",
+    "cost",
+    "billing"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shuaige-Da/dsh-cost-pill.git"
+  },
+  "homepage": "https://github.com/Shuaige-Da/dsh-cost-pill#readme",
+  "bugs": {
+    "url": "https://github.com/Shuaige-Da/dsh-cost-pill/issues"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh": ">=0.2.0-rc.2 <0.3.0-0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh": {
+      "optional": true
+    }
+  }
+}

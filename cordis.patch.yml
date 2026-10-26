@@ -1,0 +1,5 @@
+# dsh-cost-pill bundle patch: inserts the plugin's public client entry into the
+# web plugin roster. Install with `dsh plugin --profile <name> add <path|name>`.
+- insert:
+    - id: ui-cost-pill
+      name: dsh-cost-pill
