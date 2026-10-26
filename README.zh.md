@@ -29,6 +29,21 @@
 
 ![用量弹窗里逐项标价](preview/usage-dialog.png)
 
+## 每轮费用行（可选，不属于本插件）
+
+每条回答下方那行 `用量 6.2M tok · 费用 ¥0.1718` 由宿主渲染，用的是每轮的分桶 token，
+插件读不到，所以**本插件不做这一行**。如果你也想要，仓库里给了完整做法，
+既有可直接粘贴的提示词，也有可安装的技能：
+
+- [`per-turn/PROMPT.md`](per-turn/PROMPT.md) —— 发给 DSH，Agent 会代你改宿主 bundle。
+- [`per-turn/SKILL.md`](per-turn/SKILL.md) —— 同一套流程的技能形态。
+
+![由配套提示词补上的每轮费用](preview/per-turn-row.png)
+
+这条路改的是宿主自带的界面代码，也正因如此它不能作为插件分发：DSH 一升级就会被覆盖，
+所以提示词里要求 Agent 先备份、改完再校验。
+
+
 
 ## 计价规则
 

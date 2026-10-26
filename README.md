@@ -33,6 +33,24 @@ the rate window in force, and a one-line note — the same figures the pill show
 
 ![Every bucket priced inside the usage dialog](preview/usage-dialog.png)
 
+## Per-turn cost (optional — not part of this plugin)
+
+The row under each answer — `用量 6.2M tok · 费用 ¥0.1718` — is rendered by the host
+from per-turn billing buckets that a client plugin cannot read, so **this plugin
+does not add it**. If you want that row too, the repository ships the exact
+procedure, as a prompt you can paste and as an installable skill:
+
+- [`per-turn/PROMPT.md`](per-turn/PROMPT.md) — copy it to DSH and the agent patches
+  the host bundle for you.
+- [`per-turn/SKILL.md`](per-turn/SKILL.md) — the same procedure in skill form.
+
+![Per-turn cost added by the companion prompt](preview/per-turn-row.png)
+
+That route edits the host's own bundled client code, which is why it cannot ship
+as a plugin: DSH updates overwrite it, and the prompt makes the agent back up and
+verify before and after.
+
+
 
 ## Prices
 
