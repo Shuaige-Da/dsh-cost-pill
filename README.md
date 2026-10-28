@@ -93,9 +93,21 @@ Official DeepSeek list prices, yuan per 1M tokens:
 
 ## Install
 
+From the repo (works today):
+
 ```sh
-dsh plugin --profile <name> add dsh-cost-pill
+dsh plugin --profile <name> add https://github.com/Shuaige-Da/dsh-cost-pill
 ```
+
+From npm, once published:
+
+```sh
+dsh plugin --profile <name> add dsh-cost-pill-cny
+```
+
+> The npm package is `dsh-cost-pill-cny`, not `dsh-cost-pill`: the shorter name
+> already belongs to an unrelated plugin, and installing that one would give you
+> a different feature set.
 
 Or from a local checkout:
 

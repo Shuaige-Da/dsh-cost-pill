@@ -83,9 +83,20 @@ DeepSeek 官方标价，单位：元 / 百万 tokens。
 
 ## 安装
 
+从仓库安装（现在就能用）：
+
 ```sh
-dsh plugin --profile <name> add dsh-cost-pill
+dsh plugin --profile <name> add https://github.com/Shuaige-Da/dsh-cost-pill
 ```
+
+从 npm 安装（发布之后）：
+
+```sh
+dsh plugin --profile <name> add dsh-cost-pill-cny
+```
+
+> npm 包名是 `dsh-cost-pill-cny`，不是 `dsh-cost-pill`——短名已被另一个不相关的插件占用，
+> 装错的话功能完全不同。
 
 或从本地目录安装：
 
