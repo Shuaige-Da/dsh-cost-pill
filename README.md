@@ -15,6 +15,11 @@ usage and cache-hit readings.*
 
 *Rendered from this repository's own `lib/client.js` with sample usage data.*
 
+> **What the install includes.** The plugin gives you the composer pill and the
+> priced usage dialogs. The per-turn cost row under each answer — the third
+> screenshot on the listing — is **not** part of the install: it needs a small
+> host patch. Follow [Per-turn cost](#per-turn-cost-optional--installed-separately).
+
 ## What it shows
 
 `· 费用 ¥0.0871` — the estimated cost of every token this session has billed so far.

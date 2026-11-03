@@ -1,7 +1,7 @@
 {
   "name": "dsh-cost-pill-cny",
-  "version": "0.1.1",
-  "description": "Writes the session's estimated cost into the composer token-usage pill and prices every bucket in the usage dialogs, using DeepSeek's official peak and off-peak CNY rates.",
+  "version": "0.1.2",
+  "description": "Writes the session's estimated cost into the composer token-usage pill and prices every bucket in the usage dialogs, using DeepSeek's official peak and off-peak CNY rates. The per-turn cost row is a separate host patch, not part of this install.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
